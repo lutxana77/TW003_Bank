@@ -1,13 +1,14 @@
 package com.mybank.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Customer {
 	
 	//Atributos
 	private String firstName;
 	private String lastName;
-	private ArrayList<Account> accounts = new ArrayList<Account>() ;
+	private static ArrayList<Account> accounts = new ArrayList<Account>() ;
 	
 	//Metodos
 	public Customer(String firstName, String lastName, Account account) {
@@ -29,6 +30,12 @@ public class Customer {
 	public void setAccount(Account a) {
 		
 		accounts.add(a);
+	}
+	public int getNumberAccounts() {
+		return accounts.size();
+	}
+	public static List<Account> getListaCuentas(){
+		return accounts;
 	}
 
 	@Override

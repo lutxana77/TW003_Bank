@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import com.mybank.domain.Account;
 import com.mybank.domain.Bank;
 import com.mybank.domain.Customer;
 
@@ -43,9 +44,15 @@ public class DataSource {
 			try(PrintWriter salida = new PrintWriter(new FileWriter(datafile,true));){
 			
 				salida.println(Bank.getListaClientes().size());
+				
 				for (Customer c : Bank.getListaClientes()) {	
 					
-					salida.println(c);
+					salida.println(c.getFirstName()+" "+c.getLastName()+" "+c.getNumberAccounts());
+					
+					for (Account cu : c.getListaCuentas()) {
+						
+						salida.println(cu);
+					}
 				}
 			salida.flush();
 			
